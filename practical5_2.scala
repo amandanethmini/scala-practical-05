@@ -77,6 +77,14 @@ object practical5_2 {
     removeBook(isbnToRemove)
     displayLibrary()
 
+    val isbnToSearch = "9780981531649"
+
+    if (containsBook(isbnToSearch)) {
+      println("Book is already in the library.")
+    } else {
+      println("Book is not in the library.")
+    }
+
     println("\nSearching for a book by title...")
     val titleToSearch = "Clean Code"
     searchByTitle(titleToSearch)
