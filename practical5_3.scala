@@ -1,23 +1,21 @@
 object practical5_3 {
-  def fibonacci(n: Int): List[Int] = {
 
-    def fibHelper(k: Int): Int = {
-      if (k <= 1) k
-      else fibHelper(k - 1) + fibHelper(k - 2)
+  def fibSequenceRecursion(sequenceSize: Int): Seq[Long] = {
+    def getNextNum(num: Long): Long = {
+      if (num <= 1) {
+        num
+      } else {
+        getNextNum(num - 1) + getNextNum(num - 2)
+      }
     }
 
-    def fibonacciList(n: Int, acc: List[Int] = Nil): List[Int] = {
-      if (n <= 0) acc.reverse
-      else fibonacciList(n - 1, fibHelper(n - 1) :: acc)
-    }
-
-    fibonacciList(n)
+    (0L until sequenceSize).map(getNextNum)
   }
 
   def main(args: Array[String]): Unit = {
-    val n =
-      10
-    val fibonacciNumbers = fibonacci(n)
-    println(s"First $n Fibonacci numbers: ${fibonacciNumbers.mkString(", ")}")
+    val sequenceSize = 10
+    val fibonacciSequence = fibSequenceRecursion(sequenceSize)
+    println(s"Fibonacci Sequence of size $sequenceSize:")
+    println(fibonacciSequence.mkString(", "))
   }
 }
